@@ -7,7 +7,7 @@ import dropbox from "./dropbox.png";
 import logo from "./logo.svg";
 import logo2 from "./logo2.svg"
 import quotes from "./quotes.svg";
-import robot from "./robot.png";
+import robot from "./robot.webp";
 import send from "./Send.svg";
 import shield from "./Shield.svg";
 import star from "./Star.svg";
