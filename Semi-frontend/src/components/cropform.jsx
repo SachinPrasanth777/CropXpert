@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './crop.css'
 
 function CropForm() {
   const [formData, setFormData] = useState({
@@ -24,11 +25,13 @@ function CropForm() {
   };
 
   return (
-    <form id="features" onSubmit={handleSubmit}>
+
+    <div className="form-container">
+    <form className="features" onSubmit={handleSubmit}>
       <label htmlFor="rainfall">
         Rainfall (mm):
-        <input
-          type="number"
+        <input className="inputtext"
+          type="text"
           name="rainfall"
           value={formData.rainfall}
           onChange={handleData}
@@ -37,8 +40,8 @@ function CropForm() {
       <br />
       <label htmlFor="ph">
         pH:
-        <input
-          type="number"
+        <input className="inputtext"
+          type="text"
           name="ph"
           value={formData.ph}
           onChange={handleData}
@@ -47,8 +50,8 @@ function CropForm() {
       <br />
       <label htmlFor="humidity">
         Humidity:
-        <input
-          type="number"
+        <input  className="inputtext"
+          type="text"
           name="humidity"
           value={formData.humidity}
           onChange={handleData}
@@ -57,8 +60,8 @@ function CropForm() {
       <br />
       <label htmlFor="temperature">
         Temperature:
-        <input
-          type="number"
+        <input className="inputtext"
+          type="text"
           name="temperature"
           value={formData.temperature}
           onChange={handleData}
@@ -67,8 +70,8 @@ function CropForm() {
       <br />
       <label htmlFor="N">
         N:
-        <input
-          type="number"
+        <input className="inputtext"
+          type="text"
           name="N"
           value={formData.N}
           onChange={handleData}
@@ -77,8 +80,8 @@ function CropForm() {
       <br />
       <label htmlFor="P">
         P:
-        <input
-          type="number"
+        <input className="inputtext"
+          type="text"
           name="P"
           value={formData.P}
           onChange={handleData}
@@ -87,14 +90,16 @@ function CropForm() {
       <br />
       <label htmlFor="K">
         K:
-        <input
-          type="number"
+        <input className="inputtext"
+          type="text"
           name="K"
           value={formData.K}
           onChange={handleData}
         />
       </label>
+      <button className="mysubmit" type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 

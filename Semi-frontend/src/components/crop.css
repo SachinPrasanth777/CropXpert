@@ -1,0 +1,46 @@
+.form-container{
+    background-color: rgba(160, 141, 217, 0);
+    width: 100vh;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.features{
+    width: 100vh;
+    height: 60vh;
+    font-size: 0.55cm;
+    font-family: 'Poppins';
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+input{
+    border: none;
+}
+
+.inputtext{
+    box-shadow: 0 0 0.5em 0.1em rgba(183, 171, 171, 0.6);
+    text-align: center;
+    float: right;
+    border:none;
+    color: #333;
+    border-radius: 10px;
+}
+
+.mysubmit{
+    margin-left: 230px;
+    margin-top: 40px;
+    color: snow;
+    border: none;
+    cursor: pointer;
+    width: 40vh;
+    height: 10vh;
+    border-radius: 10px;
+    background-color: orange;
+    box-shadow: 0em 0em 1.5em 0.5em rgba(183, 171, 171, 0.6);
+}
