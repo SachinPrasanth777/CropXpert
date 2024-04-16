@@ -24,7 +24,7 @@ function CropForm() {
   };
 
   return (
-    <form id="cropform" onSubmit={handleSubmit}>
+    <form id="features" onSubmit={handleSubmit}>
       <label htmlFor="rainfall">
         Rainfall (mm):
         <input
