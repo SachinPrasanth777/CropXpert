@@ -1,5 +1,5 @@
 import { useState } from "react";
-import myformlink from "./feature";
+import {Link} from 'react-router-dom'
 
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
@@ -20,8 +20,7 @@ const Navbar = () => {
               active === nav.title ? "text-white" : "text-dimWhite"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
-          >
-            <a href={myformlink}>{nav.title}</a>
+          ><Link to={nav.title}>{nav.title}</Link>
           </li>
         ))}
       </ul>
@@ -48,7 +47,7 @@ const Navbar = () => {
                 } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
                 onClick={() => setActive(nav.title)}
               >
-                <a href={`#${nav.id}`}>{nav.title}</a>
+                <a href={`${nav.id}`}>{nav.title}</a>
               </li>
             ))}
           </ul>
