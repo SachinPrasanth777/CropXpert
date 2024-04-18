@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import './crop.css'
+import apiserver from "../api";
 
 function CropForm() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,16 @@ function CropForm() {
     N: "",
   });
 
+  // const newform = {
+  //   "N":formData.N,
+  //   "P":formData.P,
+  //   "K":formData.K,
+  //   "temperature": formData.temperature,
+  //   "ph":formData.ph,
+  //   "rainfall":formData.rainfall,
+  //   "humidity":formData.humidity
+  // }
+
   const handleData = (e) => {
     if (e.target.value === 0 && e.target.name === 0) {
       return { err: "empty data!! please fill it!!" };
@@ -20,25 +31,38 @@ function CropForm() {
     }
   };
 
-  const handleSubmit = (e) => {
-    const newform = {
-      "N":formData.N,
-      "P":formData.P,
-      "K":formData.K,
-      "temperature": formData.temperature,
-      "ph":formData.ph,
-      "rainfall":formData.rainfall,
-      "humidity":formData.humidity
-    }
-    try{
-      fetch('http://localhost:8000/features',{
-        method: "POST",
-        headers:{"Content-Type":"application/json"},
-        body: JSON.stringify(newform)
-      })
-    } catch(error){
-      console.error("Error:",error);
-    }
+  // const fetch = async() =>{
+  //   const response = await apiserver.post('/features');
+  //   formData(response.data)
+  // }
+  // useEffect(()=>{
+  //   fetch();
+  // },[]);
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    await apiserver.post('/features',formData);
+    setFormData({
+      rainfall: "",
+    ph: "",
+    humidity: "",
+    temperature: "",
+    K: "",
+    P: "",
+    N: "",
+    })
+    console.log("Successfully posted the crop details!")
+    
+    // try{
+    //   fetch('http://localhost:8000/features',{
+    //     method: "POST",
+    //     headers:{"Content-Type":"application/json"},
+    //     body: JSON.stringify(newform)
+    //   })
+    // } catch(error){
+    //   console.error("Error:",error);
+    // }
+   
   };
 
   return (
