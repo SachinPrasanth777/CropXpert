@@ -1,4 +1,4 @@
-import { useState , useEffect } from "react";
+import { useState } from "react";
 import './crop.css'
 import apiserver from "../api";
 
@@ -12,6 +12,7 @@ function CropForm() {
     P: "",
     N: "",
   });
+  const [predictedcrop,setpredictedcrop] = useState("");
 
   const handleData = (e) => {
     if (e.target.value === 0 && e.target.name === 0) {
@@ -20,7 +21,6 @@ function CropForm() {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
-
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -34,9 +34,10 @@ function CropForm() {
     P: "",
     N: "",
     })
+    setpredictedcrop(response.data.predicted_crop);
     console.log("Successfully posted the crop details!");
     console.log("Predicted Crop is :", response.data.predicted_crop);
-  };
+  }; 
 
   return (
 
@@ -112,7 +113,9 @@ function CropForm() {
         />
       </label>
       <button className="mysubmit" type="submit" onClick={handleSubmit}>Submit</button>
+      <a></a>
     </form>
+    {predictedcrop && <div className="predictedcrop">Suitable Crop :  {predictedcrop}</div>}
     </div>
   );
 }
