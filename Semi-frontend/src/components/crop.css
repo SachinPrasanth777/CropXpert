@@ -5,7 +5,8 @@
     display: flex;
     justify-content: center;
     margin-top: 100px;
-    margin-left: 400px;
+    margin-left: 350px;
+    flex-direction: column;
 }
 
 .features{
@@ -44,4 +45,15 @@ input{
     border-radius: 10px;
     background-color: orange;
     box-shadow: 0em 0em 1.5em 0.5em rgba(183, 171, 171, 0.6);
+}
+.predictedcrop{
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 0.75cm;
+    margin-top: 80px;
+    margin-left: 1px;
+    color: #fff;
+    border-radius: 05px;
+    box-shadow: 0 0 0.5em 0.1em  rgba(183, 171, 171, 0.6);
+
 }
