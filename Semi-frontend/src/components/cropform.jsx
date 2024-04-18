@@ -24,7 +24,7 @@ function CropForm() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    await apiserver.post('/features',formData);
+    const response = await apiserver.post('/features',formData);
     setFormData({
       rainfall: "",
     ph: "",
@@ -34,7 +34,8 @@ function CropForm() {
     P: "",
     N: "",
     })
-    console.log("Successfully posted the crop details!")
+    console.log("Successfully posted the crop details!");
+    console.log("Predicted Crop is :", response.data.predicted_crop);
   };
 
   return (
