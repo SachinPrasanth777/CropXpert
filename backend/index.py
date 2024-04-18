@@ -23,10 +23,10 @@ class InputData(BaseModel):
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=['http://localhost:5173'],
     allow_credentials=True,
-    allow_methods=['*'],
-    allow_headers=['*']
+    allow_methods=['POST'],
+    allow_headers=['Content-Type']
 )
 
 X = df[['N', 'P', 'K', 'temperature', 'ph', 'rainfall', 'humidity']]
@@ -35,7 +35,7 @@ X_train, _, y_train, _ = train_test_split(X, y, test_size=0.2, random_state=42)
 classifier = RandomForestClassifier()
 classifier.fit(X_train, y_train)
 
-@app.post("/predict/")
+@app.post("/features/" ,tags=['croppredict'])
 async def predict_crop(input_data: InputData):
     input_df = pd.DataFrame(input_data.model_dump(), index=[0])
     predicted_crop = classifier.predict(input_df)

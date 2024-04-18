@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import './crop.css'
+import apiserver from "../api";
 
 function CropForm() {
   const [formData, setFormData] = useState({
@@ -20,8 +21,21 @@ function CropForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    const response = await apiserver.post('/features',formData);
+    setFormData({
+      rainfall: "",
+    ph: "",
+    humidity: "",
+    temperature: "",
+    K: "",
+    P: "",
+    N: "",
+    })
+    console.log("Successfully posted the crop details!");
+    console.log("Predicted Crop is :", response.data.predicted_crop);
   };
 
   return (
@@ -29,31 +43,31 @@ function CropForm() {
     <div className="form-container">
     <form className="features" onSubmit={handleSubmit}>
       <label htmlFor="rainfall">
-        Rainfall (mm):
+        N:
         <input className="inputtext"
           type="text"
-          name="rainfall"
-          value={formData.rainfall}
+          name="N"
+          value={formData.N}
           onChange={handleData}
         />
       </label>
       <br />
       <label htmlFor="ph">
-        pH:
+        P:
         <input className="inputtext"
           type="text"
-          name="ph"
-          value={formData.ph}
+          name="P"
+          value={formData.P}
           onChange={handleData}
         />
       </label>
       <br />
       <label htmlFor="humidity">
-        Humidity:
+        K:
         <input  className="inputtext"
           type="text"
-          name="humidity"
-          value={formData.humidity}
+          name="K"
+          value={formData.K}
           onChange={handleData}
         />
       </label>
@@ -69,35 +83,35 @@ function CropForm() {
       </label>
       <br />
       <label htmlFor="N">
-        N:
+        pH:
         <input className="inputtext"
           type="text"
-          name="N"
-          value={formData.N}
+          name="ph"
+          value={formData.ph}
           onChange={handleData}
         />
       </label>
       <br />
       <label htmlFor="P">
-        P:
+        Rainfall(mm):
         <input className="inputtext"
           type="text"
-          name="P"
-          value={formData.P}
+          name="rainfall"
+          value={formData.rainfall}
           onChange={handleData}
         />
       </label>
       <br />
       <label htmlFor="K">
-        K:
+        Humidity:
         <input className="inputtext"
           type="text"
-          name="K"
-          value={formData.K}
+          name="humidity"
+          value={formData.humidity}
           onChange={handleData}
         />
       </label>
-      <button className="mysubmit" type="submit">Submit</button>
+      <button className="mysubmit" type="submit" onClick={handleSubmit}>Submit</button>
     </form>
     </div>
   );
