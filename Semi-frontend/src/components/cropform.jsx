@@ -13,16 +13,6 @@ function CropForm() {
     N: "",
   });
 
-  // const newform = {
-  //   "N":formData.N,
-  //   "P":formData.P,
-  //   "K":formData.K,
-  //   "temperature": formData.temperature,
-  //   "ph":formData.ph,
-  //   "rainfall":formData.rainfall,
-  //   "humidity":formData.humidity
-  // }
-
   const handleData = (e) => {
     if (e.target.value === 0 && e.target.name === 0) {
       return { err: "empty data!! please fill it!!" };
@@ -31,13 +21,6 @@ function CropForm() {
     }
   };
 
-  // const fetch = async() =>{
-  //   const response = await apiserver.post('/features');
-  //   formData(response.data)
-  // }
-  // useEffect(()=>{
-  //   fetch();
-  // },[]);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -52,17 +35,6 @@ function CropForm() {
     N: "",
     })
     console.log("Successfully posted the crop details!")
-    
-    // try{
-    //   fetch('http://localhost:8000/features',{
-    //     method: "POST",
-    //     headers:{"Content-Type":"application/json"},
-    //     body: JSON.stringify(newform)
-    //   })
-    // } catch(error){
-    //   console.error("Error:",error);
-    // }
-   
   };
 
   return (
